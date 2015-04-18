@@ -17,8 +17,8 @@ targetCompatibility = 1.8
 
 ext{
      javaVersion = '1.8'
-	 springVersion = '4.1.5.RELEASE'
-	slf4jVersion = '1.7.5'
+	  springVersion = '3.2.9.RELEASE'
+	  slf4jVersion = '1.7.5'
     logbackVersion = '1.0.13'
  }
 
@@ -66,6 +66,7 @@ idea{
         downloadJavadoc = false
         inheritOutputDirs = false
         outputDir = file("${buildDir}/classes/main")
+
     }
 }
 
@@ -138,25 +139,35 @@ dependencies {
     compile group: 'org.hibernate', name: 'hibernate-entitymanager', version:'4.2.0.Final'
     compile group: 'mysql', name: 'mysql-connector-java', version:'5.1.21'
     compile group: 'org.hsqldb', name: 'hsqldb', version:'2.3.2'
+
     compile group: 'commons-dbcp', name: 'commons-dbcp', version:'1.4'
+
     compile group: 'javassist', name: 'javassist', version:'3.12.1.GA'
-    compile group: 'org.springframework', name: 'spring-webmvc', version:'3.2.9.RELEASE'
-    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.9.RELEASE'
-    compile group: 'org.springframework', name: 'spring-jdbc', version:'3.2.9.RELEASE'
-    compile group: 'org.springframework', name: 'spring-orm', version:'3.2.9.RELEASE'
+
+    compile group: 'org.springframework', name: 'spring-webmvc', version:"${springVersion}"
+    compile group: 'org.springframework', name: 'spring-tx', version:"${springVersion}"
+    compile group: 'org.springframework', name: 'spring-jdbc', version:"${springVersion}"
+    compile group: 'org.springframework', name: 'spring-orm', version:"${springVersion}"
+    compile "org.springframework:spring-aspects:${springVersion}"
+    compile "org.springframework:spring-beans:${springVersion}"
+
     compile group: 'cglib', name: 'cglib', version:'2.2.2'
     compile group: 'jstl', name: 'jstl', version:'1.2'
-   
+
     testCompile group: 'junit', name: 'junit', version:'4.7'
-    testCompile group: 'org.springframework', name: 'spring-test', version:'3.2.9.RELEASE'
+    testCompile group: 'org.springframework', name: 'spring-test', version:"${springVersion}"
     testCompile group: 'org.springframework', name: 'spring-test-mvc', version:'1.0.0.M1'
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version:'3.0.1'
-    
+
     compile "org.springframework.data:spring-data-jpa:1.7.1.RELEASE"
-    
+
+    //validation
+    compile 'javax.validation:validation-api:1.1.0.Final'
+
+
     //jason
     compile 'com.fasterxml.jackson.core:jackson-core:2.5.1'
 	compile 'com.fasterxml.jackson.core:jackson-annotations:2.5.1'
 	compile 'com.fasterxml.jackson.core:jackson-databind:2.5.1'
-	
+
 }
